@@ -135,6 +135,7 @@ std::string Wifi::GetSsid() const {
     auto& wifiManager = WifiManager::GetInstance();
     return wifiManager.GetSsid();
 }
+
 std::string Wifi::GetIpAddress() const {
     auto& wifiManager = WifiManager::GetInstance();
     return wifiManager.GetIpAddress();
@@ -159,3 +160,20 @@ bool Wifi::IsConnected() const {
     auto& wifiManager = WifiManager::GetInstance();
     return wifiManager.IsConnected();
 }
+
+void Wifi::RestartStation() {
+    auto& wifiManager = WifiManager::GetInstance();
+
+    while( wifiManager.IsConnected() ) {
+        ESP_LOGI(this->tag.c_str(), "Wifi is stopping");
+        wifi.StopStation();
+        vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
+    }
+    // StartStation
+    wifiManager.StartStation();
+    while( !wifiManager.IsConnected() ) {
+        ESP_LOGI(this->tag.c_str(), "Wifi is starting");
+        vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
+    }
+}
+

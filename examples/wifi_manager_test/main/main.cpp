@@ -34,5 +34,12 @@ extern "C" void app_main(void)
     ESP_LOGI(tag, "Channel: %i", wifi.GetChannel());
     ESP_LOGI(tag, "MacAddress: %s", wifi.GetMacAddress().c_str());
 
+    vTaskDelay(pdMS_TO_TICKS(10000)); // delay 10 seconds
+
+    // RestartStation
+    ESP_LOGI(tag, "RestartStation");
+    wifi.RestartStation();
+    ESP_LOGI(tag, "Wifi is %s", wifi.IsConnected() ? "connected" : "not connected");
+
     vTaskDelay(pdMS_TO_TICKS(30000)); // delay 30 seconds
 }

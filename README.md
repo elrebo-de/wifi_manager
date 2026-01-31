@@ -24,6 +24,9 @@ If no useable credentials are found in NVS_FLASH storage, a configuration access
 Ssid, IpAddress, Rssi, Channel and MacAddress can be retrieved by Getters.
 
 The connection state can be tested with Method ```IsConnected()```.
+
+The connection can be restarted with Method ```RestartStation()```.
+
 Example code:
 
 ```
@@ -45,6 +48,13 @@ extern "C" void app_main(void)
     ESP_LOGI(tag, "Channel: %i", wifi.GetChannel());
     ESP_LOGI(tag, "MacAddress: %s", wifi.GetMacAddress().c_str());
     
+    vTaskDelay(pdMS_TO_TICKS(10000)); // delay 10 seconds
+
+    // RestartStation
+    ESP_LOGI(tag, "RestartStation");
+    wifi.RestartStation();
+    ESP_LOGI(tag, "Wifi is %s", wifi.IsConnected() ? "connected" : "not connected");
+
     ...
 }
 ```
@@ -68,6 +78,8 @@ public:
           std::string language      // Web UI language
 	    );
 	virtual ~Wifi();
+
+    void RestartStation();
 
     std::string GetSsid() const;
     std::string GetIpAddress() const;

@@ -26,6 +26,8 @@ public:
 	    );
 	virtual ~Wifi();
 
+    void RestartStation();
+
     std::string GetSsid() const;
     std::string GetIpAddress() const;
     int GetRssi() const;
