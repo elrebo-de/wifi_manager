@@ -19,8 +19,9 @@ To use the WifiManager component you have to include "wifi_manager.hpp".
 
 To establish a Wifi connection you have to define an instance of class Wifi.
 The constructor will establish the connection and return only after the Wifi is connected.
-If no useable credentials are found in NVS_FLASH storage, a configuration access point is started at 
-http://192.168.4.1 where the ssid and the passwort can be given.
+If no useable credentials are found in NVS_FLASH storage, a configuration access point is started at ```http://192.168.4.1``` where the ssid and the passwort can be given.
+
+Ssid, IpAddress, Rssi, Channel and MacAddress can be retrieved by Getters.
 
 Example code:
 
@@ -34,6 +35,12 @@ extern "C" void app_main(void)
 		std::string("ESP32"), // ssid prefix for the configuration access point
 		std::string("de-DE")  // language of the configuration access point
     );
+
+    ESP_LOGI(tag, "Ssid: %s", wifi.GetSsid().c_str());
+    ESP_LOGI(tag, "IpAddress: %s", wifi.GetIpAddress().c_str());
+    ESP_LOGI(tag, "Rssi: %i", wifi.GetRssi());
+    ESP_LOGI(tag, "Channel: %i", wifi.GetChannel());
+    ESP_LOGI(tag, "MacAddress: %s", wifi.GetMacAddress().c_str());
     
     ...
 }
@@ -58,6 +65,12 @@ public:
           std::string language      // Web UI language
 	    );
 	virtual ~Wifi();
+
+    std::string GetSsid() const;
+    std::string GetIpAddress() const;
+    int GetRssi() const;
+    int GetChannel() const;
+    std::string GetMacAddress() const;
 
 private:
     std::string tag = "WifiManager";

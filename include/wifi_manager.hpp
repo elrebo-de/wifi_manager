@@ -26,6 +26,12 @@ public:
 	    );
 	virtual ~Wifi();
 
+    std::string GetSsid() const;
+    std::string GetIpAddress() const;
+    int GetRssi() const;
+    int GetChannel() const;
+    std::string GetMacAddress() const;
+
 private:
     std::string tag = "WifiManager";
     std::string ssid_prefix = "ESP32";

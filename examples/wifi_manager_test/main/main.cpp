@@ -26,5 +26,11 @@ extern "C" void app_main(void)
 		std::string("de-DE") // language
     );
 
+    ESP_LOGI(tag, "Ssid: %s", wifi.GetSsid().c_str());
+    ESP_LOGI(tag, "IpAddress: %s", wifi.GetIpAddress().c_str());
+    ESP_LOGI(tag, "Rssi: %i", wifi.GetRssi());
+    ESP_LOGI(tag, "Channel: %i", wifi.GetChannel());
+    ESP_LOGI(tag, "MacAddress: %s", wifi.GetMacAddress().c_str());
+
     vTaskDelay(pdMS_TO_TICKS(30000)); // delay 30 seconds
 }

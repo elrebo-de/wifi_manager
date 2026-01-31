@@ -130,3 +130,27 @@ Wifi::Wifi( std::string tag,
 }
 
 Wifi::~Wifi() {}
+
+std::string Wifi::GetSsid() const {
+    auto& wifiManager = WifiManager::GetInstance();
+    return wifiManager.GetSsid();
+}
+std::string Wifi::GetIpAddress() const {
+    auto& wifiManager = WifiManager::GetInstance();
+    return wifiManager.GetIpAddress();
+}
+
+int Wifi::GetRssi() const {
+    auto& wifiManager = WifiManager::GetInstance();
+    return wifiManager.GetRssi();
+}
+
+int Wifi::GetChannel() const {
+    auto& wifiManager = WifiManager::GetInstance();
+    return wifiManager.GetChannel();
+}
+
+std::string Wifi::GetMacAddress() const {
+    auto& wifiManager = WifiManager::GetInstance();
+    return wifiManager.GetMacAddress();
+}
