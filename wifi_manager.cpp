@@ -166,7 +166,7 @@ void Wifi::RestartStation() {
 
     while( wifiManager.IsConnected() ) {
         ESP_LOGI(this->tag.c_str(), "Wifi is stopping");
-        wifi.StopStation();
+        wifiManager.StopStation();
         vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
     }
     // StartStation
