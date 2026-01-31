@@ -26,6 +26,8 @@ extern "C" void app_main(void)
 		std::string("de-DE") // language
     );
 
+    ESP_LOGI(tag, "Wifi is %s", wifi.IsConnected() ? "connected" : "not connected");
+
     ESP_LOGI(tag, "Ssid: %s", wifi.GetSsid().c_str());
     ESP_LOGI(tag, "IpAddress: %s", wifi.GetIpAddress().c_str());
     ESP_LOGI(tag, "Rssi: %i", wifi.GetRssi());

@@ -23,6 +23,7 @@ If no useable credentials are found in NVS_FLASH storage, a configuration access
 
 Ssid, IpAddress, Rssi, Channel and MacAddress can be retrieved by Getters.
 
+The connection state can be tested with Method ```IsConnected()```.
 Example code:
 
 ```
@@ -35,6 +36,8 @@ extern "C" void app_main(void)
 		std::string("ESP32"), // ssid prefix for the configuration access point
 		std::string("de-DE")  // language of the configuration access point
     );
+
+    ESP_LOGI(tag, "Wifi is %s connected", wifi.IsConnected() ? "" : "not");
 
     ESP_LOGI(tag, "Ssid: %s", wifi.GetSsid().c_str());
     ESP_LOGI(tag, "IpAddress: %s", wifi.GetIpAddress().c_str());
@@ -71,6 +74,8 @@ public:
     int GetRssi() const;
     int GetChannel() const;
     std::string GetMacAddress() const;
+
+    bool IsConnected() const;
 
 private:
     std::string tag = "WifiManager";

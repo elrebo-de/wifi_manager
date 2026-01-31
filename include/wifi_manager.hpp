@@ -32,6 +32,8 @@ public:
     int GetChannel() const;
     std::string GetMacAddress() const;
 
+    bool IsConnected() const;
+
 private:
     std::string tag = "WifiManager";
     std::string ssid_prefix = "ESP32";

@@ -154,3 +154,8 @@ std::string Wifi::GetMacAddress() const {
     auto& wifiManager = WifiManager::GetInstance();
     return wifiManager.GetMacAddress();
 }
+
+bool Wifi::IsConnected() const {
+    auto& wifiManager = WifiManager::GetInstance();
+    return wifiManager.IsConnected();
+}
