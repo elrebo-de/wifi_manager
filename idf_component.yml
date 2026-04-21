@@ -1,4 +1,4 @@
-version: "1.4.2"
+version: "1.4.3"
 license: "Apache 2.0"
 description: "Wifi manager component for ESP-IDF version 5.5.0+ using a C++ class"
 url: "https://elrebo.de/index.php/2026/02/23/wifi_manager/"
@@ -10,4 +10,4 @@ files:
   use_gitignore: true
 dependencies:
   idf: ">=5.5.0"
-  78/esp-wifi-connect: ~3.0.2
+  78/esp-wifi-connect: ~3.1.2

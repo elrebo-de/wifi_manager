@@ -51,25 +51,25 @@ Wifi::Wifi( std::string tag,
     config.language = this->language;        // Web UI language
     wifiManager.Initialize(config);
     // Set event callback to handle WiFi events
-    wifiManager.SetEventCallback([](WifiEvent event) {
+    wifiManager.SetEventCallback([](WifiEvent event, const std::string &data) {
         switch (event) {
             case WifiEvent::Scanning:
-                //ESP_LOGI("WiFi", "Scanning for networks...");
+                ESP_LOGI("WiFiEvent", "Scanning for networks...");
                 break;
             case WifiEvent::Connecting:
-                //ESP_LOGI("WiFi", "Connecting to network...");
+                ESP_LOGI("WiFiEvent", "Connecting to network...");
                 break;
             case WifiEvent::Connected:
-                //ESP_LOGI("WiFi", "Connected successfully!");
+                ESP_LOGI("WiFiEvent", "Connected successfully!");
                 break;
             case WifiEvent::Disconnected:
-                //ESP_LOGW("WiFi", "Disconnected from network");
+                ESP_LOGW("WiFiEvent", "Disconnected from network, reason: %s", data.c_str());
                 break;
             case WifiEvent::ConfigModeEnter:
-                //ESP_LOGI("WiFi", "Entered config mode");
+                ESP_LOGI("WiFiEvent", "Entered config mode");
                 break;
             case WifiEvent::ConfigModeExit:
-                //ESP_LOGI("WiFi", "Exited config mode");
+                ESP_LOGI("WiFiEvent", "Exited config mode");
                 break;
         }
     });
